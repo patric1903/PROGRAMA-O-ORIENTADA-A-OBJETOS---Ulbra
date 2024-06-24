@@ -1,0 +1,26 @@
+import java.util.Scanner;
+
+public class CalculadoraAposentadoria {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Digite a idade: ");
+        int idade = scanner.nextInt();
+
+        System.out.print("Digite o sexo (M/F): ");
+        char sexo = scanner.next().charAt(0);
+
+        System.out.print("Digite os anos de contribuição: ");
+        int anosContribuicao = scanner.nextInt();
+
+        int idadeMinima = (sexo == 'M' || sexo == 'm') ? 65 : 60;
+        int anosContribuicaoMinimos = 35;
+
+        if (idade >= idadeMinima || anosContribuicao >= anosContribuicaoMinimos) {
+            System.out.println("Você já pode se aposentar.");
+        } else {
+            int anosFaltam = Math.max(idadeMinima - idade, anosContribuicaoMinimos - anosContribuicao);
+            System.out.println("Faltam " + anosFaltam + " anos para você se aposentar.");
+        }
+    }
+}
